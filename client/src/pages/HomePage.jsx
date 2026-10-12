@@ -174,7 +174,7 @@ export default function HomePage() {
               position: 'relative'
             }}>
               <img
-                src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=85"
+                src="https://res.cloudinary.com/dmdltantp/image/upload/v1791817463/IMG-20261012-WA0001_wzggng.jpg"
                 alt="POWER MAX Kitchen & Home"
                 style={{ width: '100%', height: '380px', objectFit: 'cover' }}
               />
