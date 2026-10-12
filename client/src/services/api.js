@@ -1,6 +1,19 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api');
+// Get API base URL with fallback to deployed production backend
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  let url = (envUrl || 'https://power-max-api.vercel.app/api').trim();
+  // Remove any trailing slashes
+  url = url.replace(/\/+$/, '');
+  // Ensure it has /api prefix if provided without it
+  if (!url.endsWith('/api') && !url.includes('/api/')) {
+    url = `${url}/api`;
+  }
+  return url;
+};
+
+const BASE_URL = getBaseUrl();
 
 const api = axios.create({
   baseURL: BASE_URL,
