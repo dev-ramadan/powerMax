@@ -1,0 +1,28 @@
+
+.announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #080808;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+}
+
+.announcement svg {
+  flex-shrink: 0;
+  color: #ffd21f;
+}
+
+.announcement p {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .announcement {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+}
