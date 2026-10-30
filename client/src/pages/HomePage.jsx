@@ -182,7 +182,7 @@ export default function HomePage() {
               backgroundColor: '#0a0a0c',
             }}>
               <img
-                src={heroImage || "https://res.cloudinary.com/dmdltantp/image/upload/v1791817463/IMG-20261012-WA0001_wzggng.jpg"}
+                src={heroImage}
                 alt="POWER MAX Kitchen & Home"
                 style={{
                   position: 'absolute',
