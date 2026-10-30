@@ -15,6 +15,7 @@ export default function AdminSettingsPage() {
     whatsapp: '01000000000',
     email: 'info@powermax.eg',
     address: 'القاهرة، مصر',
+    heroImage: '',
     shippingFee: 60,
     freeShippingThreshold: 500,
     announcementText: 'شحن مجاني على الطلبات فوق 500 ج.م — اطلب الآن! 🚚',
@@ -175,6 +176,39 @@ export default function AdminSettingsPage() {
                 style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid #d0d0d8' }}
               />
             </div>
+          </div>
+        </div>
+
+        {/* Hero Section Image */}
+        <div style={{ borderTop: '1px solid #f0f0f3', paddingTop: '20px' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#101010', marginBottom: '16px' }}>
+            صورة الشاشة الرئيسية (Hero)
+          </h3>
+          <div>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
+              رابط الصورة
+              <span style={{ fontWeight: 400, color: '#747474', marginRight: '6px', fontSize: '12px' }}>
+                (ستظهر في أعلى الصفحة الرئيسية — موصى 1200×600px)
+              </span>
+            </label>
+            <input
+              type="url"
+              name="heroImage"
+              value={formData.heroImage}
+              onChange={handleChange}
+              placeholder="https://example.com/hero-image.jpg"
+              style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid #d0d0d8' }}
+            />
+            {formData.heroImage && (
+              <div style={{ marginTop: '12px', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e9e9ee', maxHeight: '200px' }}>
+                <img
+                  src={formData.heroImage}
+                  alt="Hero Preview"
+                  style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+              </div>
+            )}
           </div>
         </div>
 

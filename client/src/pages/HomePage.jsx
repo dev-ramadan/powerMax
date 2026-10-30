@@ -13,26 +13,31 @@ import {
   Star
 } from 'lucide-react';
 import ProductCard from '../components/common/ProductCard';
-import { productsApi, categoriesApi, bridalApi } from '../services/api';
+import { productsApi, categoriesApi, bridalApi, settingsApi } from '../services/api';
 
 export default function HomePage() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [bridalPackages, setBridalPackages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [heroImage, setHeroImage] = useState('');
 
   useEffect(() => {
     async function loadData() {
       try {
         setLoading(true);
-        const [prodRes, catRes, bridalRes] = await Promise.all([
+        const [prodRes, catRes, bridalRes, settingsRes] = await Promise.all([
           productsApi.list({ limit: 8, featured: true }),
           categoriesApi.list(),
-          bridalApi.list()
+          bridalApi.list(),
+          settingsApi.get()
         ]);
         setFeaturedProducts(prodRes.data?.items || []);
-        setCategories(catRes.data?.categories || []);
+        setCategories(catRes.data?.items || catRes.data?.categories || []);
         setBridalPackages(bridalRes.data?.packages || []);
+        if (settingsRes.data?.settings?.heroImage) {
+          setHeroImage(settingsRes.data.settings.heroImage);
+        }
       } catch (err) {
         console.error('Failed to load homepage data', err);
       } finally {
@@ -174,7 +179,7 @@ export default function HomePage() {
               position: 'relative'
             }}>
               <img
-                src="https://res.cloudinary.com/dmdltantp/image/upload/v1791817463/IMG-20261012-WA0001_wzggng.jpg"
+                src={heroImage || "https://res.cloudinary.com/dmdltantp/image/upload/v1791817463/IMG-20261012-WA0001_wzggng.jpg"}
                 alt="POWER MAX Kitchen & Home"
                 style={{ width: '100%', height: '350px', objectFit: 'contain' }}
               />

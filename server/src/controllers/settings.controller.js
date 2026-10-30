@@ -25,7 +25,7 @@ export async function getSettings(req, res, next) {
 export async function updateSettings(req, res, next) {
   try {
     const allowed = [
-      'storeName', 'tagline', 'logo', 'phone', 'email', 'address',
+      'storeName', 'tagline', 'logo', 'heroImage', 'phone', 'email', 'address',
       'facebook', 'instagram', 'whatsapp',
       'shippingFee', 'freeShippingThreshold',
       'announcementText', 'announcementActive',

@@ -13,6 +13,7 @@ const storeSettingsSchema = new mongoose.Schema({
   whatsapp: { type: String, default: '' },
   shippingFee: { type: Number, default: 60, min: 0 },
   freeShippingThreshold: { type: Number, default: 500, min: 0 },
+  heroImage: { type: String, default: '' },
   announcementText: { type: String, default: 'شحن مجاني على الطلبات فوق 500 ج.م — اطلب الآن!' },
   announcementActive: { type: Boolean, default: true },
   shippingPolicy: { type: String, default: '' },

@@ -44,14 +44,14 @@ export default function ProductDetailPage() {
         setSelectedImage(prod?.image || prod?.images?.[0] || '/logo.png');
         setQuantity(1);
 
-        if (prod?._id) {
-          try {
-            const relRes = await productsApi.getRelated(prod._id);
-            setRelated(relRes.data?.related || []);
-          } catch {
-            // ignore
+          if (prod?._id) {
+            try {
+              const relRes = await productsApi.getRelated(prod._id);
+              setRelated(relRes.data?.items || relRes.data?.related || []);
+            } catch {
+              // ignore
+            }
           }
-        }
       } catch (err) {
         console.error('Error fetching product detail', err);
       } finally {

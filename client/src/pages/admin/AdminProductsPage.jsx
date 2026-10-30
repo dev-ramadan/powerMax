@@ -35,6 +35,7 @@ export default function AdminProductsPage() {
     stock: '',
     sku: '',
     image: '',
+    imagesRaw: '', // comma-separated additional images
     description: '',
     featured: false,
     active: true
@@ -46,10 +47,10 @@ export default function AdminProductsPage() {
       setLoading(true);
       const [prodRes, catRes] = await Promise.all([
         productsApi.adminList({ limit: 100 }),
-        categoriesApi.list()
+        categoriesApi.adminList()
       ]);
       setProducts(prodRes.data?.items || []);
-      setCategories(catRes.data?.categories || []);
+      setCategories(catRes.data?.items || []);
     } catch (err) {
       console.error(err);
       showToast('فشل تحميل المنتجات والأقسام', 'error');
@@ -82,6 +83,7 @@ export default function AdminProductsPage() {
       stock: product.stock || 0,
       sku: product.sku || '',
       image: product.image || '',
+      imagesRaw: (product.images || []).join(', '),
       description: product.description || '',
       featured: product.featured || false,
       active: product.active !== false
@@ -111,6 +113,9 @@ export default function AdminProductsPage() {
 
     try {
       setModalLoading(true);
+      const extraImages = formData.imagesRaw
+        ? formData.imagesRaw.split(',').map(u => u.trim()).filter(Boolean)
+        : [];
       const payload = {
         name: formData.name.trim(),
         slug: formData.slug.trim() || undefined,
@@ -120,6 +125,7 @@ export default function AdminProductsPage() {
         stock: Number(formData.stock) || 0,
         sku: formData.sku.trim() || undefined,
         image: formData.image.trim() || undefined,
+        images: extraImages,
         description: formData.description.trim(),
         featured: formData.featured,
         active: formData.active
@@ -562,6 +568,43 @@ export default function AdminProductsPage() {
                   placeholder="https://..."
                   style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid #d0d0d8' }}
                 />
+                {formData.image && (
+                  <img
+                    src={formData.image}
+                    alt=""
+                    style={{ marginTop: '8px', width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #e9e9ee' }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                )}
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, marginBottom: '6px' }}>
+                  صور إضافية للمنتج
+                  <span style={{ fontWeight: 400, color: '#747474', marginRight: '6px', fontSize: '12px' }}>(ضع كل رابط في سطر منفصل أو افصل بينها بفاصلة)</span>
+                </label>
+                <textarea
+                  name="imagesRaw"
+                  value={formData.imagesRaw}
+                  onChange={handleFormChange}
+                  rows={3}
+                  placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
+                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid #d0d0d8', resize: 'vertical' }}
+                />
+                {/* Preview additional images */}
+                {formData.imagesRaw && (
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '8px' }}>
+                    {formData.imagesRaw.split(',').map(u => u.trim()).filter(Boolean).map((url, i) => (
+                      <img
+                        key={i}
+                        src={url}
+                        alt={`extra-${i}`}
+                        style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #e9e9ee' }}
+                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div>
