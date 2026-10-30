@@ -181,7 +181,7 @@ export default function HomePage() {
               <img
                 src={heroImage || "https://res.cloudinary.com/dmdltantp/image/upload/v1791817463/IMG-20261012-WA0001_wzggng.jpg"}
                 alt="POWER MAX Kitchen & Home"
-                style={{ width: '100%', height: '350px', objectFit: 'contain' }}
+                style={{ width: '100%', height: '380px', objectFit: 'contain' }}
               />
             </div>
 
