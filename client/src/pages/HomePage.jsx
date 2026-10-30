@@ -176,12 +176,23 @@ export default function HomePage() {
               overflow: 'hidden',
               boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
               border: '2px solid rgba(255,255,255,0.1)',
-              position: 'relative'
+              position: 'relative',
+              width: '100%',
+              aspectRatio: '16 / 11',
+              backgroundColor: '#0a0a0c',
             }}>
               <img
                 src={heroImage || "https://res.cloudinary.com/dmdltantp/image/upload/v1791817463/IMG-20261012-WA0001_wzggng.jpg"}
                 alt="POWER MAX Kitchen & Home"
-                style={{ width: '100%', height: '380px', objectFit: 'contain' }}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                }}
               />
             </div>
 
