@@ -169,7 +169,6 @@ export default function PWAInstallPrompt() {
         }}>
           {[
             { icon: <Zap size={18} color="#fbbf24" />, label: 'سريع جداً' },
-            { icon: <WifiOff size={18} color="#34d399" />, label: 'يعمل أوفلاين' },
             { icon: <Smartphone size={18} color="#60a5fa" />, label: 'تجربة تطبيق' },
           ].map(({ icon, label }) => (
             <div
