@@ -116,7 +116,7 @@ export default function ProductDetailPage() {
   };
 
   const whatsappMessage = `مرحباً، أود الاستفسار وطلب منتج "${name}" (كود: ${sku || ''}) بسعر ${price} ج.م الرابط: ${window.location.href}`;
-  const whatsappUrl = `https://wa.me/201000000000?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/+201022467259?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div style={{ maxWidth: '1280px', margin: '20px auto 70px auto', padding: '0 20px' }} dir="rtl">
