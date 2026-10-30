@@ -1,0 +1,52 @@
+{
+  "name": "POWER MAX | أفضل منتجات المنزل",
+  "short_name": "POWER MAX",
+  "description": "كل احتياجات بيتك وتجهيز العروسة في مكان واحد - Power Max",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0c",
+  "theme_color": "#f20d16",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "المنتجات",
+      "short_name": "منتجات",
+      "description": "تصفح جميع منتجاتنا",
+      "url": "/products",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "جهاز العروسة",
+      "short_name": "عروسة",
+      "description": "عروض وباقات تجهيز العروسة",
+      "url": "/bridal",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    }
+  ]
+}

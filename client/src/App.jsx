@@ -6,6 +6,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import CartDrawer from './components/common/CartDrawer';
 import WhatsAppButton from './components/common/WhatsAppButton';
+import PWAInstallPrompt from './components/common/PWAInstallPrompt';
 
 // Storefront Pages
 import HomePage from './pages/HomePage';
@@ -42,6 +43,7 @@ function StorefrontLayout({ children }) {
       </main>
       <Footer />
       <WhatsAppButton />
+      <PWAInstallPrompt />
     </div>
   );
 }
